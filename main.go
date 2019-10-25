@@ -140,6 +140,7 @@ func main() {
 				panic(err)
 			}
 			for _, pr := range prs {
+				// NOTE: pr.RequestedReviewers only contains reviewers who have not approved the PR, whereas ListReviews includes all users.
 				reviews, resp, err := client.GithubClient.PullRequests.ListReviews(ctx, fGithubOwner, pr.GetBase().GetRepo().GetName(), pr.GetNumber(), &github.ListOptions{PerPage: 2})
 				if err != nil {
 					fmt.Println(pr.GetBase().GetRepo().GetName(), pr.GetNumber())
