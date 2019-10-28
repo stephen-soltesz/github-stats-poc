@@ -151,7 +151,7 @@ func checkPR(ctx context.Context, client *github.Client, pr *github.PullRequest)
 		return nil, nil
 	}
 	// NOTE: pr.RequestedReviewers only contains reviewers who have not
-	// approved the PR, whereas ListReviews includes all users.
+	// approved the PR, whereas ListReviews includes completed reviews.
 	reviews, resp, err := client.PullRequests.ListReviews(
 		ctx, fGithubOwner, pr.GetBase().GetRepo().GetName(),
 		pr.GetNumber(), &github.ListOptions{PerPage: 3})
