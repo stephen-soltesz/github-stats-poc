@@ -237,7 +237,6 @@ func checkPR(ctx context.Context, client *github.Client, pr *github.PullRequest)
 	return prLines, nil
 }
 
-//
 func checkAllPRs(ctx context.Context, client *github.Client, repo string) error {
 	opt2 := &github.PullRequestListOptions{
 		State:       "closed",
